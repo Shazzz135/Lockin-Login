@@ -7,7 +7,8 @@
 
 ## Project
 - Simple Sign Up and Login
-- If successfuly logged in, you get a cake image
+- Uses Tailwind CSS
+- If successfuly logged in, you get a Cake image
 
 ## Rules
 - Must use Hooks
