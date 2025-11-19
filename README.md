@@ -14,7 +14,7 @@
 - Must use Hooks
 - Components less than 250 lines
 - Organized and Simplfied folders and files
-- 3 Days to Complete (Nov. 19 - Nov. 21)
+- 5 Days to Complete (Nov. 19 - Nov. 23)
 
 ---
 
