@@ -1,4 +1,4 @@
-import { useSignupForm } from "../../hooks/signupform";
+import { useSignupForm } from "../../components/auth/signupform";
 import Card from "../../components/Card.tsx";
 
 function SignUp() {
