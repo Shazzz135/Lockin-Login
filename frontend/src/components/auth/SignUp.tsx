@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Card from "../Card";
 
 function SignUp() {
@@ -11,13 +12,16 @@ function SignUp() {
     });
 
     const [error, setError] = useState<string | null>(null);
+    const [success, setSuccess] = useState<string | null>(null);
+    const navigate = useNavigate();
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         setForm({ ...form, [e.target.name]: e.target.value });
         setError(null);
+        setSuccess(null);
     }
 
-    function handleSubmit(e: React.FormEvent) {
+    async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
         if (!form.firstname || !form.lastname || !form.email || !form.password || !form.confirmPassword) {
             setError("All fields are required.");
@@ -37,7 +41,41 @@ function SignUp() {
         }
         setError(null);
 
-        console.log(form);
+        // Proceed with form submission (e.g., API call)
+        try {
+          const response = await fetch('http://localhost:3000/api/users', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              firstname: form.firstname,
+              lastname: form.lastname,
+              email: form.email,
+              password: form.password,
+              count: 0
+            })
+          });
+
+          const data = await response.json();
+          if (response.ok) {
+            setSuccess("User created successfully");
+            setForm({
+              firstname: "",
+              lastname: "",
+              email: "",
+              password: "",
+              confirmPassword: ""
+            });
+            setTimeout(() => {
+              navigate("/home");
+            }, 1000);
+          } else {
+            setError(data.message || "Signup Failed");
+          }
+        } catch (err) {
+            setError("Network error. Please try again.");
+        }
     }   
 
     const isFormValid = 
@@ -98,6 +136,9 @@ function SignUp() {
           required
           placeholder="Confirm Password"
         />
+        {success && (
+          <div className="text-green-500 text-sm text-center">{success}</div>
+        )}
         {error && (
           <div className="text-red-500 text-sm text-center">{error}</div>
         )}

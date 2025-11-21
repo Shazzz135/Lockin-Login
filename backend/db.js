@@ -1,3 +1,5 @@
+/* Purpose of this file is to connect to MongoDB Database */
+
 const mongoose = require('mongoose');
 require('dotenv').config();
 
