@@ -1,19 +1,13 @@
+import type { ReactNode } from "react";
 
-import type { ReactNode } from "react"
-
-type Card = {
-    children?: ReactNode
+interface CardProps {
+  children: ReactNode;
 }
 
-function Card({ children }: Card) {
-
+export default function Card({ children }: CardProps) {
   return (
-    <>
-        <div className = "Card bg-white p-6 rounded-lg shadow-md">
-            {children}
-        </div>
-    </>
-  )
+    <div className="bg-white rounded-2xl shadow p-8 w-full max-w-md">
+      {children}
+    </div>
+  );
 }
-
-export default Card
