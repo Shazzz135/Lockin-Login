@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Card from "../Card";
 
 function SignUp() {
@@ -43,7 +43,7 @@ function SignUp() {
 
         // Proceed with form submission (e.g., API call)
         try {
-          const response = await fetch('http://localhost:3000/api/users', {
+          const response = await fetch('http://localhost:3000/api/signup', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -150,6 +150,9 @@ function SignUp() {
         >
           Sign Up
         </button>
+        <div className="text-center mt-2 text-blue-600">
+            Already have an account? <Link className = "underline" to="../login">Login</Link>
+        </div>
       </form>
     </Card>
   );
