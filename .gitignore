@@ -1,0 +1,45 @@
+# Node modules
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# Build output
+frontend/dist/
+backend/dist/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Env files
+.env
+backend/.env
+frontend/.env
+
+# Vite/React
+frontend/.vite
+
+# IDE
+.vscode/
+
+# pnpm
+pnpm-lock.yaml
+frontend/pnpm-lock.yaml
+backend/pnpm-lock.yaml
+
+# Misc
+*.local
+
+# Coverage
+coverage/
+
+# Others
+frontend/.next/
+backend/.next/
+
+# Ignore test output
+frontend/coverage/
+backend/coverage/
