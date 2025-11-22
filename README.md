@@ -8,10 +8,9 @@
 ## Project
 - Simple Sign Up and Login
 - Uses Tailwind CSS
-- If successfuly logged in, you get a Cake image
+- If successfully logged in, you get a Cake image, and a counter 
 
 ## Rules
-- Must use Hooks
 - Components less than 200 lines
 - Organized and Simplfied folders and files
 - 5 Days to Complete (Nov. 19 - Nov. 23)
