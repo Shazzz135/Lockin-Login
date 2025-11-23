@@ -29,4 +29,4 @@ I installed MongoDB Compass and created my backend folder mainly applying the UR
 Setting up the index.js and users.js, creating a schema for POSTing to the database which takes firstname, lastname, email, password(hashed with bcrypt), count(default at 0), and datecreated. Once I ran the backend and saw "MongoDB connection successfull" message from my log, I intagrated that in my frontend for the SignUp component with redirection to the Home page on success.
 
 ### Day 4:
-Added api/login to verify the user account is created, checks for email and passwords to confirm frontend inputs, once confirmed user is redirected to home page ...
+Added api/login to verify the user account is created, checks for email and passwords to confirm frontend inputs, once confirmed user is redirected to home page. Added JWT token authentication. Used Copilot Agent to restructure all files into proper/standard format.
