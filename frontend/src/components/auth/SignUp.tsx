@@ -72,7 +72,9 @@ function SignUp() {
               navigate("/home");
             }, 1000);
           } else {
-            setError(data.message || "Signup Failed");
+            // Show detailed backend error message if available
+            setError(data.message || data.error || "Signup Failed");
+            console.error('Signup error:', data);
           }
         } catch (err) {
             setError("Network error. Please try again.");
