@@ -18,15 +18,17 @@ function Login() {
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
         try {
-      const response = await fetch("http://localhost:3000/api/login", {
+      const response = await fetch("/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
         const data = await response.json();
+        console.log('Login response:', { status: response.status, data });
         if (response.ok) {
             setSuccess("Login Successful!");
-            localStorage.setItem('token', data.token); // Store JWT
+            localStorage.setItem('accessToken', data.accessToken);
+            localStorage.setItem('refreshToken', data.refreshToken);
             setForm({
               email: "",
               password: "",
@@ -35,9 +37,11 @@ function Login() {
               navigate("/home");
             }, 1000);
         } else {
-            setError(data.message || "Login failed.");
+            console.error('Login failed:', data);
+            setError(data.message || data.error || "Login failed.");
         }
         } catch (error) {
+            console.error('Network error:', error);
             setError("An error occurred. Please try again.");
         }
     }

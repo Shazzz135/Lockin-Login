@@ -1,14 +1,17 @@
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload, Secret, SignOptions } from 'jsonwebtoken';
 
-const JWT_SECRET = process.env.JWT_SECRET as string;
+const JWT_SECRET: Secret = process.env.JWT_SECRET as string;
 
 export function generateToken(payload: object, expiresIn: string = '24h'): string {
-    return jwt.sign(payload, JWT_SECRET, { expiresIn });
+    const options: SignOptions = { expiresIn: expiresIn as any };
+    return jwt.sign(payload, JWT_SECRET, options);
 }
 
-export function verifyToken(token: string): object | null {
+export function verifyToken(token: string): JwtPayload | null {
     try {
-        return jwt.verify(token, JWT_SECRET);
+        const decoded = jwt.verify(token, JWT_SECRET);
+        if (typeof decoded === 'string') return null;
+        return decoded;
     } catch (err) {
         return null;
     }

@@ -43,7 +43,7 @@ function SignUp() {
 
         // Proceed with form submission (e.g., API call)
         try {
-          const response = await fetch('http://localhost:3000/api/signup', {
+          const response = await fetch('/api/signup', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -60,7 +60,8 @@ function SignUp() {
           const data = await response.json();
           if (response.ok) {
             setSuccess("User created successfully");
-            localStorage.setItem('token', data.token); // Store JWT
+            localStorage.setItem('accessToken', data.accessToken);
+            localStorage.setItem('refreshToken', data.refreshToken);
             setForm({
               firstname: "",
               lastname: "",
@@ -147,9 +148,8 @@ function SignUp() {
         )}
         <button
           type="submit"
-          className="bg-blue-500 text-white rounded p-2"
+          className="bg-blue-500 text-white rounded p-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           disabled={!isFormValid}
-          style={{ opacity: isFormValid ? 1 : 0.5, cursor: isFormValid ? "pointer" : "not-allowed" }}
         >
           Sign Up
         </button>
