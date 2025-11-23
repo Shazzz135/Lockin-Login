@@ -30,3 +30,6 @@ Setting up the index.js and users.js, creating a schema for POSTing to the datab
 
 ### Day 4:
 Added api/login to verify the user account is created, checks for email and passwords to confirm frontend inputs, once confirmed user is redirected to home page. Added JWT token authentication. Used Copilot Agent to restructure all files into proper/standard format.
+
+### Day 5:
+Completed UI for homepage, displayed users information along with updated count, completed JWT token authentication using access(15min) and refresh(7days) tokens.
