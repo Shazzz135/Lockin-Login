@@ -26,6 +26,7 @@ function Login() {
         const data = await response.json();
         if (response.ok) {
             setSuccess("Login Successful!");
+            localStorage.setItem('token', data.token); // Store JWT
             setForm({
               email: "",
               password: "",
@@ -67,7 +68,8 @@ function Login() {
             {error && <p className="text-red-500 text-center">{error}</p>}
             <button
               type="submit"
-              className="bg-blue-500 text-white rounded p-2 hover:bg-blue-600 transition"
+              className="bg-blue-500 text-white rounded p-2 transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={form.email.trim() === "" || form.password.trim() === ""}
             >
               Login
             </button>

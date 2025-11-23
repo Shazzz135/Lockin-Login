@@ -60,6 +60,7 @@ function SignUp() {
           const data = await response.json();
           if (response.ok) {
             setSuccess("User created successfully");
+            localStorage.setItem('token', data.token); // Store JWT
             setForm({
               firstname: "",
               lastname: "",
